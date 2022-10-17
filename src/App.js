@@ -7,7 +7,25 @@ function App() {
   const [people, setPeople] = useState(data);
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const lastIndex = people.length - 1;
+
+    if (index < 0) {
+      setIndex(lastIndex);
+    } else if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, people]);
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex(index + 1);
+    }, 4000);
+
+    return () => {
+      clearInterval(slider);
+    };
+  }, [index]);
 
   return (
     <section className="section">
@@ -48,9 +66,9 @@ function App() {
           className="prev"
           onClick={() => {
             setIndex(index - 1);
-            if (index === 0) {
-              setIndex(3);
-            }
+            // if (index === 0) {
+            //   setIndex(3);
+            // }
           }}
         >
           <FiChevronLeft />
@@ -61,9 +79,9 @@ function App() {
           onClick={() => {
             setIndex(index + 1);
 
-            if (index === 3) {
-              setIndex(0);
-            }
+            // if (index === 3) {
+            //   setIndex(0);
+            // }
           }}
         >
           <FiChevronRight />
