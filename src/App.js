@@ -5,10 +5,19 @@ import { FaQuoteRight } from "react-icons/fa";
 import data from "./data";
 
 function App() {
+  const [people, setPeople] = useState(data);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {}, []);
+
   return (
-    <div className="App">
-      <h1>done</h1>
-    </div>
+    <section className="section">
+      <div className="title">
+        <h2>
+          <span>/</span> reviews
+        </h2>
+      </div>
+    </section>
   );
 }
 
